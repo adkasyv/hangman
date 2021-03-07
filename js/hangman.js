@@ -25,6 +25,7 @@ function randomWord() {
     answer = programming_languages[Math.floor(Math.random() * programming_languages.length)];
 }
 
+// Создаем буквы
 function generateButtons() {
     let buttonsHTML = 'abcdefghijklmnopqrstuvwxyz'.split('').map(letter =>
         `
@@ -55,15 +56,18 @@ function handleGuess(chosenLetter) {
     }
 }
 
+// Обновляем картинку
 function updateHangmanPicture() {
     document.getElementById('hangmanPic').src = './images/' + mistakes + '.jpg';
 }
 
+// Сообщение при выигрыше
 function checkIfGameWon() {
     if (wordStatus === answer) {
         document.getElementById('keyboard').innerHTML = 'You Won!!!';
     }
 }
+// Сообщение при проигрыше
 function checkIfGameLost() {
     if (mistakes === maxWrong) {
         document.getElementById('wordSpotlight').innerHTML = 'The answer was: ' + answer;
@@ -71,6 +75,7 @@ function checkIfGameLost() {
     }
 }
 
+// Угаданное слово
 function guessedWord() {
     wordStatus = answer.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
 
@@ -81,6 +86,7 @@ function updateMistakes() {
     document.getElementById('mistakes').innerHTML = mistakes;
 }
 
+// Сброс игры
 function reset() {
     mistakes = 0;
     guessed = [];
